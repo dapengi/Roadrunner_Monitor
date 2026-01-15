@@ -1,0 +1,64 @@
+# =====================================================
+# Legislative Monitor - Fixed Requirements
+# Python 3.10 or 3.11 REQUIRED
+# =====================================================
+
+# Note: PyTorch is installed separately by setup.sh to handle platform differences
+# (macOS uses MPS, Linux uses CUDA)
+
+# Speech Recognition & Diarization
+faster-whisper>=1.0.3  # Newer version for av 13.x compatibility
+openai-whisper==20231117
+sherpa-onnx==1.10.46
+pyannote.audio==3.1.1
+speechbrain==0.5.16
+
+# NVIDIA NeMo for Canary (high-accuracy ASR)
+nemo_toolkit[asr]==1.23.0
+kaldi-python-io==1.2.2
+kaldiio==2.18.0
+
+# Transformers & Hugging Face
+transformers==4.36.2
+datasets==2.16.1
+huggingface_hub==0.20.2
+
+# Audio Processing
+av>=13.0.0  # PyAV - must be first to ensure FFmpeg 7.x compatibility
+librosa==0.10.1
+soundfile==0.12.1
+pydub==0.25.1
+
+# Scientific Computing
+numpy==1.24.3
+scipy==1.11.4
+scikit-learn==1.3.2
+
+# Video Download
+yt-dlp==2024.12.23
+
+# Web Scraping
+beautifulsoup4==4.12.3
+requests==2.31.0
+lxml==5.1.0
+
+# Document Generation
+python-docx==1.1.0
+
+# Task Scheduling
+schedule==1.2.1
+
+# Environment & Config
+python-dotenv==1.0.1
+
+# Progress Bars
+tqdm==4.66.1
+
+# Audio Event Classification (for sound detection)
+panns-inference==0.1.0
+
+# WebDAV Client for Seafile
+webdav4==0.9.8
+
+# Additional Utilities
+Pillow==10.2.0
