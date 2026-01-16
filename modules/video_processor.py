@@ -17,6 +17,12 @@ from config import DOWNLOAD_DIR
 
 logger = logging.getLogger(__name__)
 
+# Minimum valid file size in bytes - files smaller than this are likely
+# corrupted, truncated, or contain only error messages rather than actual
+# video/audio content. 1KB is a reasonable threshold as even a few seconds
+# of audio/video would be larger than this.
+MIN_VALID_FILE_SIZE = 1024
+
 
 # Removed: get_proxy_status and get_proxy_url functions
 
@@ -213,7 +219,7 @@ def check_download_success(output_file):
     ]
     
     for possible_file in possible_files:
-        if os.path.exists(possible_file) and os.path.getsize(possible_file) > 1024:
+        if os.path.exists(possible_file) and os.path.getsize(possible_file) > MIN_VALID_FILE_SIZE:
             if possible_file != output_file:
                 os.rename(possible_file, output_file)
                 return output_file
@@ -277,7 +283,7 @@ def extract_audio_from_video(video_path):
                 audio_path
             ], check=True, capture_output=True, text=True)
             
-            if os.path.exists(audio_path) and os.path.getsize(audio_path) > 1024:
+            if os.path.exists(audio_path) and os.path.getsize(audio_path) > MIN_VALID_FILE_SIZE:
                 file_size_mb = os.path.getsize(audio_path) / (1024 * 1024)
                 logger.info(f"Audio extracted successfully to {audio_path} (size: {file_size_mb:.2f} MB)")
                 return audio_path
@@ -313,7 +319,7 @@ def extract_audio_with_alternative_ffmpeg(video_path):
             audio_path
         ], check=True, capture_output=True, text=True)
         
-        if os.path.exists(audio_path) and os.path.getsize(audio_path) > 1024:
+        if os.path.exists(audio_path) and os.path.getsize(audio_path) > MIN_VALID_FILE_SIZE:
             file_size_mb = os.path.getsize(audio_path) / (1024 * 1024)
             logger.info(f"Audio extracted with alternative method to {audio_path} (size: {file_size_mb:.2f} MB)")
             return audio_path
