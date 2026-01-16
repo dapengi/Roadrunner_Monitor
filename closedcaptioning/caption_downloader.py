@@ -42,14 +42,14 @@ class CaptionDownloader:
             )
 
             if response.status_code == 200:
-                print(f"✅ Webhook sent to n8n: {filename}")
+                logger.info(f"✅ Webhook sent to n8n: {filename}")
                 return True
             else:
-                print(f"⚠️ Webhook failed: {response.status_code}")
+                logger.warning(f"⚠️ Webhook failed: {response.status_code}")
                 return False
 
         except Exception as e:
-            print(f"❌ Webhook error: {e}")
+            logger.error(f"❌ Webhook error: {e}")
             return False
 
     def fetch_page(self, url):
@@ -59,7 +59,7 @@ class CaptionDownloader:
             response.raise_for_status()
             return response.text
         except requests.exceptions.RequestException as e:
-            print(f"Error fetching page: {e}")
+            logger.error(f"Error fetching page: {e}")
             return None
 
     def extract_captions(self, html_content):
@@ -69,7 +69,7 @@ class CaptionDownloader:
         match = re.search(pattern, html_content, re.DOTALL)
         
         if not match:
-            print("No ccItems found in the page")
+            logger.warning("No ccItems found in the page")
             return None
 
         try:
@@ -85,14 +85,14 @@ class CaptionDownloader:
             cc_items = json.loads(cc_items_str)
             return cc_items
         except json.JSONDecodeError as e:
-            print(f"Error parsing caption data: {e}")
+            logger.error(f"Error parsing caption data: {e}")
             
             # Fallback: try to extract captions with regex
             return self._extract_captions_regex(html_content)
 
     def _extract_captions_regex(self, html_content):
         """Fallback method to extract captions using regex"""
-        print("Trying regex fallback method...")
+        logger.info("Trying regex fallback method...")
         
         # Look for caption entries with Begin/End/Content pattern
         pattern = r'"Begin"\s*:\s*"([^"]+)"[^}]*"End"\s*:\s*"([^"]+)"[^}]*"Content"\s*:\s*"([^"]+)"'
@@ -229,7 +229,7 @@ class CaptionDownloader:
         if output_formats is None:
             output_formats = ['txt']
             
-        print(f"Fetching captions from: {url}")
+        logger.info(f"Fetching captions from: {url}")
         
         # Fetch the page
         html_content = self.fetch_page(url)
@@ -239,7 +239,7 @@ class CaptionDownloader:
         # Extract captions
         caption_data = self.extract_captions(html_content)
         if not caption_data:
-            print("No captions found on this page")
+            logger.warning("No captions found on this page")
             return False
             
         # Extract metadata
@@ -248,10 +248,10 @@ class CaptionDownloader:
         # Get captions for English (default language)
         captions = caption_data.get('en', [])
         if not captions:
-            print("No English captions found")
+            logger.warning("No English captions found")
             return False
             
-        print(f"Found {len(captions)} caption segments")
+        logger.info(f"Found {len(captions)} caption segments")
         
         # Save in requested formats
         success = True
@@ -273,14 +273,14 @@ class CaptionDownloader:
                 elif format_type == 'json':
                     self.save_as_json(captions, filepath)
                 else:
-                    print(f"Unknown format: {format_type}")
+                    logger.warning(f"Unknown format: {format_type}")
                     continue
 
-                print(f"Saved {format_type.upper()}: {filepath}")
+                logger.info(f"Saved {format_type.upper()}: {filepath}")
                 saved_files.append(filename)
 
             except Exception as e:
-                print(f"Error saving {format_type}: {e}")
+                logger.error(f"Error saving {format_type}: {e}")
                 success = False
 
         # Send webhook notification for successfully saved files
@@ -307,10 +307,10 @@ def main():
     success = downloader.download_captions(args.url, args.formats, args.output_dir)
     
     if success:
-        print("Caption download completed successfully!")
+        logger.info("Caption download completed successfully!")
         sys.exit(0)
     else:
-        print("Caption download failed!")
+        logger.error("Caption download failed!")
         sys.exit(1)
 
 
