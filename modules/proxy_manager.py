@@ -128,7 +128,8 @@ class ProxyManager:
                         raise Exception(f"Proxy not working - returned direct IP {test_ip}")
                     
                 except Exception as direct_check_error:
-                    logger.warning(f"Could not verify direct IP for comparison: {direct_check_error}")
+                    logger.error(f"❌ Could not verify direct IP for comparison: {direct_check_error}")
+                    raise Exception(f"Fail-safe: Cannot verify proxy is working - direct IP check failed: {direct_check_error}")
                 
                 # Check if we got a different IP than previous attempts
                 if test_ip in failed_ips:
