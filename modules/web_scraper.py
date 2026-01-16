@@ -54,7 +54,7 @@ def make_request_with_proxy(url, headers=None, max_retries=3, proxy_manager=None
                     if proxy_manager.test_proxy_connection(max_retries=3):
                         logger.info("✅ Successfully obtained new proxy IP from Oxylabs")
                     else:
-                        logger.warning("⚠️ Failed to get new proxy IP, will retry with direct connection")
+                        logger.warning("⚠️ Failed to get new proxy IP, will retry with current proxy")
 
             if attempt < max_retries - 1:
                 wait_time = (2 ** attempt) + random.uniform(1, 3)
