@@ -64,9 +64,6 @@ def make_request_with_proxy(url, headers=None, max_retries=3, proxy_manager=None
                 logger.error(f"All {max_retries} attempts failed for URL: {url}")
                 raise
     
-    return None
-
-
 def get_current_entries(proxy_manager=None):
     """Fetch and parse the current entries from the website using proxy."""
     try:
