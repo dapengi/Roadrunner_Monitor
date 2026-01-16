@@ -66,11 +66,18 @@ class TranscriptPipeline:
                     # Parse times
                     times = timestamp_str.split(' - ')
                     if len(times) == 2:
-                        start_parts = times[0].split(':')
-                        end_parts = times[1].split(':')
+                        # Parse timestamp - supports both MM:SS and HH:MM:SS formats
+                        def parse_timestamp(ts):
+                            parts = ts.split(":")
+                            if len(parts) == 2:  # MM:SS
+                                return int(parts[0]) * 60 + int(parts[1])
+                            elif len(parts) == 3:  # HH:MM:SS
+                                return int(parts[0]) * 3600 + int(parts[1]) * 60 + int(parts[2])
+                            else:
+                                raise ValueError(f"Invalid timestamp format: {ts}")
                         
-                        start_seconds = int(start_parts[0]) * 60 + int(start_parts[1])
-                        end_seconds = int(end_parts[0]) * 60 + int(end_parts[1])
+                        start_seconds = parse_timestamp(times[0])
+                        end_seconds = parse_timestamp(times[1])
                         
                         # Extract speaker and text
                         remainder = line[end_bracket + 1:].strip()
