@@ -121,7 +121,7 @@ def handle_processing_failure(entry_link, reason, committee_name, meeting_date_s
         return False, False
 
 
-def process_entry_with_canary(entry, proxy_manager, seafile_client, sftp_client):
+def process_entry_with_canary(entry, proxy_manager, seafile_client):
     """Process entry using Canary pipeline and upload to Seafile."""
     processing_start_time = time.time()
     
@@ -241,15 +241,31 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client, sftp_client)
                 except Exception as e:
                     logger.error(f"  ❌ Error uploading {fmt.upper()} to Seafile: {e}")
         
-        # Upload to SFTP
+        # Upload to SFTP (Just-In-Time Connection)
         logger.info("Step 5/5: Uploading to SFTP...")
         sftp_results = {}
+        sftp_client = None
 
         # Use saved files for SFTP upload
         files_to_upload = [f for f in saved_files.values() if Path(f).exists()]
         
         if files_to_upload:
             try:
+                # Initialize SFTP client with fresh connection (just-in-time)
+                logger.info("Connecting to SFTP server...")
+                sftp_client = SFTPClient(
+                    host=SFTP_HOST,
+                    port=SFTP_PORT,
+                    username=SFTP_USERNAME,
+                    password=SFTP_PASSWORD,
+                    upload_path=SFTP_UPLOAD_PATH
+                )
+                
+                if not sftp_client.connect():
+                    raise Exception("Failed to connect to SFTP server")
+                
+                logger.info("✅ SFTP connected")
+                
                 # Upload all files to flat incoming directory (no subfolders)
                 upload_results_sftp = sftp_client.upload_files(files_to_upload, subfolder=None)
                 
@@ -259,6 +275,8 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client, sftp_client)
                         sftp_results[filename] = filename
                     else:
                         logger.warning(f"  ❌ Failed to upload to SFTP: {filename}")
+                
+                # Clean up local files after successful upload
                 for f in files_to_upload:
                     try:
                         os.unlink(f)
@@ -267,6 +285,15 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client, sftp_client)
                         
             except Exception as e:
                 logger.error(f"  ❌ Error during SFTP upload: {e}")
+            
+            finally:
+                # Always disconnect SFTP after upload attempt
+                if sftp_client:
+                    try:
+                        sftp_client.disconnect()
+                        logger.info("SFTP connection closed")
+                    except Exception as e:
+                        logger.warning(f"Error closing SFTP connection: {e}")
         
         # Cleanup temporary video and audio files
         try:
@@ -380,21 +407,6 @@ def run_hourly_check():
         logger.error(f"❌ Failed to initialize Seafile: {e}")
         return False
 
-    # Initialize SFTP client
-    logger.info("Initializing SFTP client...")
-    try:
-        sftp_client = SFTPClient(
-            host=SFTP_HOST,
-            port=SFTP_PORT,
-            username=SFTP_USERNAME,
-            password=SFTP_PASSWORD,
-            upload_path=SFTP_UPLOAD_PATH
-        )
-        logger.info("✅ SFTP client initialized")
-    except Exception as e:
-        logger.error(f"❌ Failed to initialize SFTP: {e}")
-        return False
-    
     # Daily cleanup check
     if should_run_daily_cleanup():
         logger.info("Running daily cleanup...")
@@ -432,7 +444,7 @@ def run_hourly_check():
     
     for i, entry in enumerate(filtered_entries, 1):
         logger.info(f"\n📝 Processing entry {i}/{len(filtered_entries)}")
-        result = process_entry_with_canary(entry, proxy_manager, seafile_client, sftp_client)
+        result = process_entry_with_canary(entry, proxy_manager, seafile_client)
         
         if result:
             processed_count += 1
