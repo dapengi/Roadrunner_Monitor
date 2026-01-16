@@ -225,12 +225,13 @@ class TranscriptPipeline:
                 upload_to_seafile
             )
 
-            # Clean up audio file
-            try:
-                os.remove(audio_path)
-                logger.info(f"Cleaned up temporary audio file: {audio_path}")
-            except Exception as e:
-                logger.warning(f"Could not remove audio file: {e}")
+            # Clean up audio file (check exists to avoid race condition warnings)
+            if os.path.exists(audio_path):
+                try:
+                    os.remove(audio_path)
+                    logger.info(f"Cleaned up temporary audio file: {audio_path}")
+                except Exception as e:
+                    logger.warning(f"Could not remove audio file: {e}")
 
             return result
 
