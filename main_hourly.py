@@ -9,6 +9,7 @@ import logging
 import datetime
 import time
 import sys
+import traceback
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -239,7 +240,7 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client):
                     else:
                         logger.warning(f"  ❌ Failed to upload {fmt.upper()} to Seafile")
                 except Exception as e:
-                    logger.error(f"  ❌ Error uploading {fmt.upper()} to Seafile: {e}")
+                    logger.error(f"  ❌ Error uploading {fmt.upper()} to Seafile: {e}", exc_info=True)
         
         # Upload to SFTP (Just-In-Time Connection)
         logger.info("Step 5/5: Uploading to SFTP...")
@@ -284,7 +285,7 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client):
                         pass
                         
             except Exception as e:
-                logger.error(f"  ❌ Error during SFTP upload: {e}")
+                logger.error(f"  ❌ Error during SFTP upload: {e}", exc_info=True)
             
             finally:
                 # Always disconnect SFTP after upload attempt
@@ -354,9 +355,7 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client):
 
 
     except Exception as e:
-        logger.error(f"Error processing entry: {e}")
-        import traceback
-        traceback.print_exc()
+        logger.error(f"Error processing entry: {e}", exc_info=True)
         # Use retry logic for unexpected errors too
         entry_link = entry.get('link')
         if entry_link:
@@ -404,7 +403,7 @@ def run_hourly_check():
         )
         logger.info("✅ Seafile client initialized")
     except Exception as e:
-        logger.error(f"❌ Failed to initialize Seafile: {e}")
+        logger.error(f"❌ Failed to initialize Seafile: {e}", exc_info=True)
         return False
 
     # Daily cleanup check
@@ -477,7 +476,5 @@ if __name__ == "__main__":
         success = run_hourly_check()
         sys.exit(0 if success else 1)
     except Exception as e:
-        logger.error(f"Fatal error in hourly run: {e}")
-        import traceback
-        traceback.print_exc()
+        logger.error(f"Fatal error in hourly run: {e}", exc_info=True)
         sys.exit(1)
