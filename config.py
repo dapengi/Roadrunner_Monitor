@@ -94,6 +94,12 @@ NEXTCLOUD_BASE_FOLDER = "Legislative Transcription"
 # ===============================
 # N8N WEBHOOK CONFIGURATION
 # ===============================
+N8N_WEBHOOK_URL_PROD = os.getenv("N8N_WEBHOOK_URL_PROD", "https://n8n.dapengi.cloud/webhook/legislative-manifest")
+N8N_WEBHOOK_URL_TEST = os.getenv("N8N_WEBHOOK_URL_TEST", "https://n8n.dapengi.cloud/webhook-test/legislative-manifest")
+N8N_WEBHOOK_ENABLED = os.getenv("N8N_WEBHOOK_ENABLED", "true").lower() == "true"
+N8N_WEBHOOK_MODE = os.getenv("N8N_WEBHOOK_MODE", "production")  # "production" or "test"
+
+# Legacy webhook URL (deprecated)
 N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "http://192.168.4.52:5678/webhook/legislative-transcription")
 
 # ===============================

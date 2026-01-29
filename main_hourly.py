@@ -32,6 +32,7 @@ from modules.utils import (
     MAX_RETRY_COUNT
 )
 from modules.pushover_notifications import notify_success, notify_failure, notify_failure_simple
+from modules.webhook import send_transcription_webhook
 
 # Configure logging
 logging.basicConfig(
@@ -47,6 +48,39 @@ logger = logging.getLogger(__name__)
 
 # Create download directory if it doesn't exist
 Path(DOWNLOAD_DIR).mkdir(exist_ok=True)
+
+import fcntl
+import atexit
+
+# Lock file to prevent concurrent executions
+LOCK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".hourly_run.lock")
+lock_fd = None
+
+def acquire_lock():
+    """Acquire exclusive lock to prevent concurrent runs."""
+    global lock_fd
+    try:
+        lock_fd = open(LOCK_FILE, 'w')
+        fcntl.flock(lock_fd.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        lock_fd.write(str(os.getpid()))
+        lock_fd.flush()
+        return True
+    except (IOError, OSError) as e:
+        if lock_fd:
+            lock_fd.close()
+        return False
+
+def release_lock():
+    """Release the lock file."""
+    global lock_fd
+    if lock_fd:
+        try:
+            fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
+            lock_fd.close()
+            os.unlink(LOCK_FILE)
+        except:
+            pass
+
 
 def parse_meeting_datetime(entry_text: str):
     """
@@ -328,6 +362,47 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client):
             logger.info(f"   SFTP: {len(sftp_results)} files → {filename_gen.get_sftp_path()}")
             logger.info(f"   Duration: {processing_duration:.1f}s")
 
+            # Send webhook to n8n for client report processing
+            try:
+                # Get public share link for the .txt transcript file
+                txt_file_path = seafile_results.get('txt', '')
+                txt_share_link = ""
+                try:
+                    if txt_file_path:
+                        txt_share_link = seafile_client.get_share_link(txt_file_path)
+                        if txt_share_link:
+                            logger.info(f"  📎 Created share link for TXT: {txt_share_link}")
+                    else:
+                        logger.warning("  ⚠️ No TXT file path found in seafile_results")
+                except Exception as e:
+                    logger.warning(f"  ⚠️ Could not create share link: {e}")
+
+                webhook_data = {
+                    "filename": base_name,
+                    "folder_path": seafile_base_path,
+                    "meeting_info": {
+                        "committee_name": committee_name,
+                        "committee_acronym": filename_gen.get_committee_acronym(),
+                        "type": filename_gen.get_meeting_type(),
+                        "chamber": filename_gen.get_chamber(),
+                    },
+                    "seafile_result": {
+                        "share_link": txt_share_link,
+                        "txt_file_path": txt_file_path,
+                        "nextcloud_path": seafile_base_path,
+                        "meeting_date": meeting_date_str,
+                        "meeting_time": meeting_time_str,
+                    },
+                    "processed_at": datetime.datetime.now().isoformat(),
+                    "processing_time_seconds": processing_duration,
+                    "segments_count": result.get('segments_count', 0),
+                    "speakers_count": result.get('speakers_count', 0),
+                }
+
+                send_transcription_webhook(webhook_data)
+            except Exception as e:
+                logger.warning(f"⚠️ Failed to send webhook (non-critical): {e}")
+
             notify_success(
                 committee=committee_name,
                 meeting_date=meeting_date_str,
@@ -473,8 +548,18 @@ def run_hourly_check():
 
 if __name__ == "__main__":
     try:
+        # Acquire lock to prevent concurrent runs
+        if not acquire_lock():
+            logger.warning("Another instance is already running. Exiting.")
+            sys.exit(0)
+
+        # Register cleanup on exit
+        atexit.register(release_lock)
+
         success = run_hourly_check()
         sys.exit(0 if success else 1)
     except Exception as e:
         logger.error(f"Fatal error in hourly run: {e}", exc_info=True)
         sys.exit(1)
+    finally:
+        release_lock()

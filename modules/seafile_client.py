@@ -30,8 +30,20 @@ class SeafileClient:
             'Authorization': f'Token {self.token}',
             'Accept': 'application/json'
         }
+        # Cache for directory listings to avoid repeated API calls
+        self._dir_cache = {}
 
         logger.info(f"Initialized Seafile client for {self.base_url}")
+
+    def _clear_cache(self, path: str = None):
+        """Clear directory cache for a path or all paths."""
+        if path:
+            # Clear cache for this path and its parent
+            self._dir_cache.pop(path, None)
+            parent = str(Path(path).parent)
+            self._dir_cache.pop(parent, None)
+        else:
+            self._dir_cache.clear()
 
     def file_exists(self, path: str) -> bool:
         """Check if a file exists in Seafile."""
@@ -47,6 +59,44 @@ class SeafileClient:
             return response.status_code == 200
         except Exception as e:
             logger.debug(f"File exists check failed for {path}: {e}")
+            return False
+
+    def dir_exists(self, path: str) -> bool:
+        """
+        Check if a directory exists in Seafile by listing its parent directory.
+
+        Args:
+            path: Directory path to check (e.g., "/Session/HOUSE")
+
+        Returns:
+            True if directory exists, False otherwise
+        """
+        try:
+            # Normalize path
+            path = path.rstrip('/')
+            if not path or path == '/':
+                return True  # Root always exists
+
+            # Get parent directory and target name
+            parent = str(Path(path).parent)
+            if parent == '.':
+                parent = '/'
+            target_name = Path(path).name
+
+            # List the parent directory and check if our target exists
+            entries = self.list_dir(parent)
+            if entries is None:
+                # Parent directory doesn't exist or error
+                return False
+
+            for entry in entries:
+                if entry.get('name') == target_name and entry.get('type') == 'dir':
+                    return True
+
+            return False
+
+        except Exception as e:
+            logger.debug(f"Dir exists check failed for {path}: {e}")
             return False
 
     def read_file(self, path: str) -> Optional[str]:
@@ -197,8 +247,14 @@ class SeafileClient:
         return self.write_file(path, content)
 
     def ensure_dir_exists(self, path: str) -> bool:
-        """Ensure a directory exists in Seafile."""
+        """
+        Ensure a directory exists in Seafile.
+        Checks if each directory level exists before creating to avoid duplicates.
+        """
         try:
+            # Clear cache at start to get fresh data
+            self._clear_cache()
+
             # Split path and create each directory level
             path_parts = [p for p in path.strip('/').split('/') if p]
             current_path = ""
@@ -206,18 +262,32 @@ class SeafileClient:
             for part in path_parts:
                 current_path = f"{current_path}/{part}" if current_path else f"/{part}"
 
-                # Try to create directory
+                # Check if directory already exists before creating
+                if self.dir_exists(current_path):
+                    logger.debug(f"Directory already exists: {current_path}")
+                    continue
+
+                # Create directory since it doesn't exist
+                logger.info(f"Creating directory: {current_path}")
                 url = f"{self.base_url}/api2/repos/{self.library_id}/dir/"
                 response = requests.post(
                     url,
                     headers=self.headers,
-                    data={'operation': 'mkdir', 'create_parents': 'false'},
+                    data={'operation': 'mkdir'},
                     params={'p': current_path},
                     timeout=10
                 )
 
-                # 200 = created, 409 = already exists, both are OK
-                if response.status_code not in [200, 409]:
+                # Clear cache after creating so next check sees the new dir
+                self._clear_cache(current_path)
+
+                if response.status_code == 200:
+                    logger.info(f"Created directory: {current_path}")
+                elif response.status_code == 201:
+                    logger.info(f"Created directory: {current_path}")
+                elif response.status_code == 409:
+                    logger.debug(f"Directory already exists (409): {current_path}")
+                else:
                     logger.warning(f"Dir creation issue for {current_path}: {response.status_code}")
 
             return True
@@ -229,6 +299,10 @@ class SeafileClient:
     def list_dir(self, path: str) -> Optional[List[Dict]]:
         """List contents of a directory in Seafile."""
         try:
+            # Check cache first
+            if path in self._dir_cache:
+                return self._dir_cache[path]
+
             url = f"{self.base_url}/api/v2.1/repos/{self.library_id}/dir/"
             response = requests.get(
                 url,
@@ -239,7 +313,10 @@ class SeafileClient:
 
             if response.status_code == 200:
                 data = response.json()
-                return data.get('dirent_list', [])
+                result = data.get('dirent_list', [])
+                # Cache the result
+                self._dir_cache[path] = result
+                return result
             else:
                 logger.debug(f"List dir failed for {path}: {response.status_code}")
                 return None
