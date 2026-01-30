@@ -32,7 +32,7 @@ from modules.utils import (
     MAX_RETRY_COUNT
 )
 from modules.pushover_notifications import notify_success, notify_failure, notify_failure_simple
-from modules.webhook import send_transcription_webhook
+from modules.webhook import send_transcription_webhook, build_webhook_payload
 
 # Configure logging
 logging.basicConfig(
@@ -377,27 +377,19 @@ def process_entry_with_canary(entry, proxy_manager, seafile_client):
                 except Exception as e:
                     logger.warning(f"  ⚠️ Could not create share link: {e}")
 
-                webhook_data = {
-                    "filename": base_name,
-                    "folder_path": seafile_base_path,
-                    "meeting_info": {
-                        "committee_name": committee_name,
-                        "committee_acronym": filename_gen.get_committee_acronym(),
-                        "type": filename_gen.get_meeting_type(),
-                        "chamber": filename_gen.get_chamber(),
-                    },
-                    "seafile_result": {
-                        "share_link": txt_share_link,
-                        "txt_file_path": txt_file_path,
-                        "nextcloud_path": seafile_base_path,
-                        "meeting_date": meeting_date_str,
-                        "meeting_time": meeting_time_str,
-                    },
-                    "processed_at": datetime.datetime.now().isoformat(),
-                    "processing_time_seconds": processing_duration,
-                    "segments_count": result.get('segments_count', 0),
-                    "speakers_count": result.get('speakers_count', 0),
-                }
+                # Build webhook payload in n8n expected format
+                webhook_data = build_webhook_payload(
+                    committee=filename_info.get('committee', 'UNKNOWN'),
+                    meeting_date=meeting_date,
+                    session_type=filename_info.get('session_type', 'IC'),
+                    start_time=filename_info.get('start_time', ''),
+                    end_time=filename_info.get('end_time', ''),
+                    base_name=base_name,
+                    segments_count=result.get('segments_count', 0),
+                    speakers_count=result.get('speakers_count', 0),
+                    seafile_base_path=seafile_base_path,
+                    share_link=txt_share_link
+                )
 
                 send_transcription_webhook(webhook_data)
             except Exception as e:
