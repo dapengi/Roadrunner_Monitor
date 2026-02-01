@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "William A. Hall II",
+    "chamber": "House",
+    "district": "3",
+    "party": "Republican",
+    "committees": [
+      "HJC",
+      "HLVMA",
+      "HEEB",
+      "CCJ",
+      "IPOC",
+      "LEC"
+    ],
+    "slug": "william_a_hall_ii"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.047774",
+    "notes": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(chmod:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git clone:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(timeout 300 python3 test_transcription.py /Users/minimac/Desktop/TestScript.mp3 --no-timestamps --preview)",
+      "WebFetch(domain:www.scottnelson.xyz)",
+      "Bash(ffmpeg:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:lwe.vote)",
+      "WebFetch(domain:res.cloudinary.com)",
+      "Bash(pkill:*)",
+      "Bash(brew install:*)",
+      "Bash(ssh josh@192.168.4.50:*)",
+      "Bash(scp:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix SFTP connection timeout with just-in-time connection\n\nProblem: SFTP connection was initialized at the start of processing,\nbut sat idle for 60-90 minutes during video download and transcription.\nBy upload time, the connection was dead \\(\"Socket is closed\" error\\).\n\nSolution: Implement just-in-time SFTP connection - connect only right\nbefore upload, disconnect immediately after. Connection now open for\n~5-10 seconds instead of 60-90 minutes.\n\nChanges:\n- Remove sftp_client parameter from process_entry_with_canary\\(\\)\n- Remove early SFTP initialization in run_hourly_check\\(\\)\n- Add fresh SFTP connection right before upload \\(Step 5/5\\)\n- Add proper cleanup with try/finally to always disconnect\n- Add logging for connection lifecycle\n\nExpected impact: ~99%+ success rate vs ~60% before \\(on long meetings\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(grep:*)",
+      "WebSearch",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "Bash(du -sh:*)",
+      "Bash(xargs:*)"
+    ],
+    "deny": [],
+    "defaultMode": "acceptEdits"
+  }
+}

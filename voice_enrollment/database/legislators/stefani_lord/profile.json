@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Stefani Lord",
+    "chamber": "House",
+    "district": "22",
+    "party": "Republican",
+    "committees": [
+      "HRDLC",
+      "HCPA",
+      "LGC",
+      "RHMC",
+      "CCJ",
+      "ERDPC",
+      "IAC",
+      "IPOC",
+      "MVAC",
+      "NMFA",
+      "WNR"
+    ],
+    "slug": "stefani_lord"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.048920",
+    "notes": []
+  }
+}

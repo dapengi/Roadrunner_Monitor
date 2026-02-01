@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Anita Gonzales",
+    "chamber": "House",
+    "district": "70",
+    "party": "Democrat",
+    "committees": [
+      "HEEB",
+      "HED",
+      "HRDLC",
+      "STTC",
+      "ERDPC",
+      "LGC",
+      "LHHS",
+      "TIRS",
+      "PSCO"
+    ],
+    "slug": "anita_gonzales"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.054617",
+    "notes": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "David M. Gallegos",
+    "chamber": "Senate",
+    "district": "41",
+    "party": "Republican",
+    "committees": [
+      "SHPA",
+      "SRULES",
+      "ALC",
+      "LGC",
+      "RHMC",
+      "TIRS",
+      "ERDPC",
+      "LHHS",
+      "LFC"
+    ],
+    "slug": "david_m_gallegos"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.059863",
+    "notes": []
+  }
+}

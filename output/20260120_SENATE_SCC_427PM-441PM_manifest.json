@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "created_at": "2026-01-22T15:49:17.291251",
+  "meeting": {
+    "committee": "SCC",
+    "date": "2026-01-20",
+    "session_type": "SENATE",
+    "start_time": "427PM",
+    "end_time": "441PM"
+  },
+  "transcript": {
+    "base_name": "20260120_SENATE_SCC_427PM-441PM",
+    "segments_count": 82,
+    "speakers_count": 9
+  },
+  "files": [
+    {
+      "format": "json",
+      "path": "/Session/SENATE/SCC/2026-01-20/captions/20260120_SENATE_SCC_427PM-441PM.json",
+      "filename": "20260120_SENATE_SCC_427PM-441PM.json"
+    },
+    {
+      "format": "csv",
+      "path": "/Session/SENATE/SCC/2026-01-20/captions/20260120_SENATE_SCC_427PM-441PM.csv",
+      "filename": "20260120_SENATE_SCC_427PM-441PM.csv"
+    },
+    {
+      "format": "txt",
+      "path": "/Session/SENATE/SCC/2026-01-20/captions/20260120_SENATE_SCC_427PM-441PM.txt",
+      "filename": "20260120_SENATE_SCC_427PM-441PM.txt"
+    }
+  ]
+}

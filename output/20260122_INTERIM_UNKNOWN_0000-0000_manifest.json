@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "created_at": "2026-01-23T07:18:52.974553",
+  "meeting": {
+    "committee": "UNKNOWN",
+    "date": "2026-01-22",
+    "session_type": "INTERIM",
+    "start_time": "0000",
+    "end_time": "0000"
+  },
+  "transcript": {
+    "base_name": "20260122_INTERIM_UNKNOWN_0000-0000",
+    "segments_count": 455,
+    "speakers_count": 10
+  },
+  "files": [
+    {
+      "format": "json",
+      "path": "/Session/INTERIM/UNKNOWN/2026-01-22/captions/20260122_INTERIM_UNKNOWN_0000-0000.json",
+      "filename": "20260122_INTERIM_UNKNOWN_0000-0000.json"
+    },
+    {
+      "format": "csv",
+      "path": "/Session/INTERIM/UNKNOWN/2026-01-22/captions/20260122_INTERIM_UNKNOWN_0000-0000.csv",
+      "filename": "20260122_INTERIM_UNKNOWN_0000-0000.csv"
+    },
+    {
+      "format": "txt",
+      "path": "/Session/INTERIM/UNKNOWN/2026-01-22/captions/20260122_INTERIM_UNKNOWN_0000-0000.txt",
+      "filename": "20260122_INTERIM_UNKNOWN_0000-0000.txt"
+    }
+  ]
+}

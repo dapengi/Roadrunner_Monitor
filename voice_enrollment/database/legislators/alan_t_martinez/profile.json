@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Alan T. Martinez",
+    "chamber": "House",
+    "district": "23",
+    "party": "Republican",
+    "committees": [
+      "HHHS",
+      "HJC",
+      "HPS",
+      "HXRC",
+      "ALC",
+      "CSS",
+      "ERDPC",
+      "STTC",
+      "ZLICW",
+      "CCJ",
+      "LHHS",
+      "MVAC",
+      "RSTP"
+    ],
+    "slug": "alan_t_martinez"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.048978",
+    "notes": []
+  }
+}

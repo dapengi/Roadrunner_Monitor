@@ -1,0 +1,30 @@
+VOICE DATABASE ENROLLMENT SUMMARY
+================================================================================
+
+Created: 2026-01-12T22:11:45.791594
+Method: Sherpa-ONNX diarization + NeMo TitaNet embeddings
+Model: nvidia/speakerverification_en_titanet_large
+Embedding dimensions: 192
+Source: voice_enrollment/audio/House_Appropriation_012425.mp3
+Legislators enrolled: 
+
+ENROLLED LEGISLATORS:
+--------------------------------------------------------------------------------
+
+Harlan Vincent
+  House | District 56 | Republican
+  Samples: 10
+  Duration: 465.0s
+  Speaker label: SPEAKER_00
+
+Meredith A. Dixon
+  House | District 20 | Democrat
+  Samples: 10
+  Duration: 10870.0s
+  Speaker label: SPEAKER_02
+
+Nathan P. Small
+  House | District 36 | Democrat
+  Samples: 10
+  Duration: 2715.0s
+  Speaker label: SPEAKER_01

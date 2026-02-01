@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Jonathan A. Henry",
+    "chamber": "House",
+    "district": "54",
+    "party": "Republican",
+    "committees": [
+      "HENR",
+      "HTR",
+      "HEEA",
+      "WNR",
+      "LESC",
+      "MFA",
+      "LFC",
+      "RSTP"
+    ],
+    "slug": "jonathan_a_henry"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.053712",
+    "notes": []
+  }
+}

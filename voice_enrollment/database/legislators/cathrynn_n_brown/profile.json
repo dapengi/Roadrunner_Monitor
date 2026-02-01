@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Cathrynn N. Brown",
+    "chamber": "House",
+    "district": "55",
+    "party": "Republican",
+    "committees": [
+      "HTPWCI",
+      "HAFC",
+      "LEC",
+      "RHMC",
+      "TIRS",
+      "ZFFSS",
+      "LFC"
+    ],
+    "slug": "cathrynn_n_brown"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.053765",
+    "notes": []
+  }
+}

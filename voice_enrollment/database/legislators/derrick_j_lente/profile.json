@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Derrick J. Lente",
+    "chamber": "House",
+    "district": "65",
+    "party": "Democrat",
+    "committees": [
+      "HTR",
+      "HCED",
+      "RSTP",
+      "LFC",
+      "PSCO"
+    ],
+    "slug": "derrick_j_lente"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.054301",
+    "notes": []
+  }
+}

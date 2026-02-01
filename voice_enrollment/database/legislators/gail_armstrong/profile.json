@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Gail Armstrong",
+    "chamber": "House",
+    "district": "49",
+    "party": "Republican",
+    "committees": [
+      "HCED",
+      "HTPWCI",
+      "HPS",
+      "HXRC",
+      "ALC",
+      "CBPC",
+      "CSS",
+      "ERDPC",
+      "LESC",
+      "CCJ",
+      "IPOC",
+      "MFA",
+      "STTC",
+      "TIRS",
+      "WNR",
+      "LFC"
+    ],
+    "slug": "gail_armstrong"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.053448",
+    "notes": []
+  }
+}

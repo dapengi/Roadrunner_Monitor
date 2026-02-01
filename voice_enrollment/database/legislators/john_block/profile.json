@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "John Block",
+    "chamber": "House",
+    "district": "51",
+    "party": "Republican",
+    "committees": [
+      "HGEIA",
+      "HCPA",
+      "IAC",
+      "NMFA",
+      "LESC",
+      "CCJ",
+      "LHHS",
+      "RHMC"
+    ],
+    "slug": "john_block"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.053554",
+    "notes": []
+  }
+}

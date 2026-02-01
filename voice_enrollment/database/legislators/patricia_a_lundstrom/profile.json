@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Patricia A. Lundstrom",
+    "chamber": "House",
+    "district": "9",
+    "party": "Democrat",
+    "committees": [
+      "HTPWCI",
+      "HTR",
+      "ZFFSS",
+      "LEC",
+      "RSTP",
+      "TIRS",
+      "ERDPC",
+      "IAC"
+    ],
+    "slug": "patricia_a_lundstrom"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.048129",
+    "notes": []
+  }
+}

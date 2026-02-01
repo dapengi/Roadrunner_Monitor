@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Mark Duncan",
+    "chamber": "House",
+    "district": "2",
+    "party": "Republican",
+    "committees": [
+      "HTR",
+      "HAFC",
+      "HXRC",
+      "IPOC",
+      "RSTP",
+      "ZFFSS",
+      "LFC"
+    ],
+    "slug": "mark_duncan"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.047695",
+    "notes": []
+  }
+}

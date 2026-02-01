@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "William E. Sharer",
+    "chamber": "Senate",
+    "district": "1",
+    "party": "Republican",
+    "committees": [
+      "SIRCA",
+      "STBT",
+      "SCC",
+      "ALC",
+      "CBPC",
+      "CSS",
+      "IAC",
+      "LEC",
+      "RSTP",
+      "ERDPC",
+      "LFC"
+    ],
+    "slug": "william_e_sharer"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.054673",
+    "notes": []
+  }
+}

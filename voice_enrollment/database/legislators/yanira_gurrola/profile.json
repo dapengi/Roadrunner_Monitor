@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Yanira Gurrola",
+    "chamber": "House",
+    "district": "16",
+    "party": "Democrat",
+    "committees": [
+      "HED",
+      "HENR",
+      "HEEB",
+      "RHMC",
+      "LESC",
+      "CCJ",
+      "IAC",
+      "LEC",
+      "STTC"
+    ],
+    "slug": "yanira_gurrola"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.048532",
+    "notes": []
+  }
+}

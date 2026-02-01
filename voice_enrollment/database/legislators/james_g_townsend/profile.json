@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "James G. Townsend",
+    "chamber": "Senate",
+    "district": "34",
+    "party": "Republican",
+    "committees": [
+      "SRULES",
+      "SJC",
+      "LEC",
+      "RHMC",
+      "WNR",
+      "ZFFSS",
+      "ERDPC",
+      "STTC",
+      "RSTP"
+    ],
+    "slug": "james_g_townsend"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.059487",
+    "notes": []
+  }
+}

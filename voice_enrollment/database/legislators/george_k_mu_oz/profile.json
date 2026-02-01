@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "George K. Mu\u00f1oz",
+    "chamber": "Senate",
+    "district": "4",
+    "party": "Democrat",
+    "committees": [
+      "SFC",
+      "SCC",
+      "LFC",
+      "PSCO",
+      "RSTP",
+      "TIRS",
+      "ZFFSS",
+      "IAC",
+      "IPOC"
+    ],
+    "slug": "george_k_mu_oz"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.054838",
+    "notes": []
+  }
+}

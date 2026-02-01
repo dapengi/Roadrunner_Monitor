@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "William P. Soules",
+    "chamber": "Senate",
+    "district": "37",
+    "party": "Democrat",
+    "committees": [
+      "SED",
+      "SIRCA",
+      "LESC",
+      "ZFFSS",
+      "PSCO",
+      "STTC",
+      "IAC",
+      "LFC"
+    ],
+    "slug": "william_p_soules"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.059647",
+    "notes": []
+  }
+}

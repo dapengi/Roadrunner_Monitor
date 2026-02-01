@@ -1,0 +1,75 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment and secrets
+.env
+*.pem
+id_ed25519
+token.json
+credentials.json
+client_secret_*.json
+
+# Logs
+*.log
+
+# Data files (large/dynamic)
+downloads/
+data/
+processed_entries.txt
+latest_entries.txt
+retry_counts.json
+last_cleanup.txt
+last_proxy_update.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Audio/video files (large)
+*.mp3
+*.mp4
+*.wav
+*.m4a
+
+# Backup files
+*.backup
+*.bak
+*.deb
+*.deb.*
+
+# Virtual environments (explicit)
+venv/
+venv_*/
+.venv/
+
+# Audio files
+voice_enrollment/audio/
+*.wav
+*.mp3
+*.mp4
+*.m4a
+*.flac
+
+# Downloads
+downloads/
+
+# Large deb files  
+*.deb
+*.deb.*
+
+# Speaker clips (large)
+voice_enrollment/speaker_clips/

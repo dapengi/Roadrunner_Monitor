@@ -1,0 +1,10 @@
+104.237.242.139:8001:bxwzxdtj:7blqrsdr6ra3
+154.30.107.64:8002:bxwzxdtj:7blqrsdr6ra3
+158.222.113.43:8003:bxwzxdtj:7blqrsdr6ra3
+209.147.81.109:8004:bxwzxdtj:7blqrsdr6ra3
+45.41.130.174:8005:bxwzxdtj:7blqrsdr6ra3
+45.56.135.182:8006:bxwzxdtj:7blqrsdr6ra3
+205.142.33.165:8007:bxwzxdtj:7blqrsdr6ra3
+205.142.35.8:8008:bxwzxdtj:7blqrsdr6ra3
+205.143.208.69:8009:bxwzxdtj:7blqrsdr6ra3
+205.143.212.81:8010:bxwzxdtj:7blqrsdr6ra3

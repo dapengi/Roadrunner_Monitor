@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Sarah Silva",
+    "chamber": "House",
+    "district": "53",
+    "party": "Democrat",
+    "committees": [
+      "HAFC",
+      "HTR",
+      "HEEA",
+      "ERDPC",
+      "IPOC",
+      "MFA",
+      "CCJ",
+      "LHHS",
+      "NMFA",
+      "STTC",
+      "TIRS",
+      "LFC",
+      "RSTP"
+    ],
+    "slug": "sarah_silva"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.053658",
+    "notes": []
+  }
+}

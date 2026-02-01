@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Linda M. L\u00f3pez",
+    "chamber": "Senate",
+    "district": "11",
+    "party": "Democrat",
+    "committees": [
+      "SHPA",
+      "SRULES",
+      "LHHS",
+      "TSROC",
+      "LESC",
+      "IAC",
+      "LGC",
+      "WNR",
+      "ZFFSS"
+    ],
+    "slug": "linda_m_l_pez"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.055216",
+    "notes": []
+  }
+}

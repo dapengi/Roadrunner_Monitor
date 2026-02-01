@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  roadrunner:
+    build: .
+    container_name: roadrunner_granite
+    restart: unless-stopped
+
+    # Load environment variables from .env file
+    env_file:
+      - .env
+
+    # ROCm GPU passthrough for AMD
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+
+    # Required for ROCm GPU access
+    group_add:
+      - video
+      - render
+
+    # Security context for GPU access
+    security_opt:
+      - seccomp:unconfined
+
+    # Volume mounts
+    volumes:
+      - ./.env:/app/.env:ro
+      - ./downloads:/app/downloads
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./captions:/app/captions
+      - huggingface_cache:/root/.cache/huggingface
+      - speechbrain_cache:/root/.cache/speechbrain
+
+    # Environment variables
+    environment:
+      - PYTHONUNBUFFERED=1
+      # ROCm environment for RDNA 3.5 compatibility
+      - HSA_OVERRIDE_GFX_VERSION=11.0.0
+      - PYTORCH_ROCM_ARCH=gfx1100
+      # HuggingFace cache location
+      - HF_HOME=/root/.cache/huggingface
+
+    # Network configuration (outbound only)
+    networks:
+      - default
+
+# Named volumes for model caching
+volumes:
+  huggingface_cache:
+    name: roadrunner_hf_cache
+  speechbrain_cache:
+    name: roadrunner_speechbrain_cache
+
+# Default network
+networks:
+  default:
+    driver: bridge

@@ -1,0 +1,93 @@
+SPEAKER MAPPING SUMMARY
+================================================================================
+
+Created: 2026-01-30T09:09:12.668622
+Source: voice_enrollment/audio/House_Appropriations_012225.mp3
+Legislators labeled: 14
+
+LABELED LEGISLATORS:
+--------------------------------------------------------------------------------
+
+Brian G. Baca
+  House | District 8 | Republican
+  Segments: 66
+  Duration: 154.9s
+  Speaker label: SPEAKER_08
+
+Cathrynn N. Brown
+  House | District 55 | Republican
+  Segments: 63
+  Duration: 127.3s
+  Speaker label: SPEAKER_03
+
+Joseph Franklin Hernandez
+  House | District 4 | Democrat
+  Segments: 91
+  Duration: 165.8s
+  Speaker label: SPEAKER_12
+
+Joseph Sanchez
+  House | District 40 | Democrat
+  Segments: 23
+  Duration: 35.6s
+  Speaker label: SPEAKER_16
+
+Joy Garratt
+  House | District 29 | Democrat
+  Segments: 16
+  Duration: 35.9s
+  Speaker label: SPEAKER_18
+
+Mark Duncan
+  House | District 2 | Republican
+  Segments: 52
+  Duration: 88.0s
+  Speaker label: SPEAKER_10
+
+Meredith A. Dixon
+  House | District 20 | Democrat
+  Segments: 181
+  Duration: 333.1s
+  Speaker label: SPEAKER_05
+
+Nathan P. Small
+  House | District 36 | Democrat
+  Segments: 303
+  Duration: 630.8s
+  Speaker label: SPEAKER_17
+
+Pamelya Herndon
+  House | District 28 | Democrat
+  Segments: 35
+  Duration: 34.2s
+  Speaker label: SPEAKER_01
+
+Randall T. Pettigrew
+  House | District 61 | Republican
+  Segments: 169
+  Duration: 288.0s
+  Speaker label: SPEAKER_11
+
+Rebecca Dow
+  House | District 38 | Republican
+  Segments: 120
+  Duration: 232.6s
+  Speaker label: SPEAKER_04
+
+Sarah Silva
+  House | District 53 | Democrat
+  Segments: 57
+  Duration: 117.7s
+  Speaker label: SPEAKER_02
+
+Susan K. Herrera
+  House | District 41 | Democrat
+  Segments: 156
+  Duration: 378.6s
+  Speaker label: SPEAKER_19
+
+Tara L. Lujan
+  House | District 48 | Democrat
+  Segments: 55
+  Duration: 112.1s
+  Speaker label: SPEAKER_06

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "legislator": {
+    "name": "Angelita Mejia",
+    "chamber": "House",
+    "district": "58",
+    "party": "Republican",
+    "committees": [
+      "HGEIA",
+      "HLVMA",
+      "HEEA",
+      "LGC",
+      "NMFA",
+      "IAC",
+      "MVAC",
+      "WNR"
+    ],
+    "slug": "angelita_mejia"
+  },
+  "voice_samples": [],
+  "embeddings": {
+    "model": null,
+    "vector": null,
+    "last_updated": null
+  },
+  "stats": {
+    "total_samples": 0,
+    "total_segments": 0,
+    "total_speech_time": 0.0,
+    "meetings_covered": [],
+    "first_enrolled": null,
+    "last_updated": null
+  },
+  "metadata": {
+    "created": "2026-01-31T22:28:18.053926",
+    "notes": []
+  }
+}

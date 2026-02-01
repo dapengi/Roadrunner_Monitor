@@ -1,0 +1,63 @@
+# Git
+.git
+.gitignore
+
+# Python
+.venv
+venv
+env
+__pycache__/
+**/__pycache__/
+*/__pycache__/
+modules/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs and temp files
+*.log
+logs/*
+!logs/.gitkeep
+
+# Downloads (temp files)
+downloads/*
+!downloads/.gitkeep
+
+# Environment files (mounted at runtime)
+.env
+.env.local
+.env.*.local
+
+# Documentation
+*.md
+!README.md
+
+# Archive
+Archive/
+
+# Voice enrollment data (large files)
+voice_enrollment/audio/*
+voice_enrollment/database/*
+voice_enrollment/samples/*
+voice_enrollment/speaker_clips/*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files (keep test_single_meeting.py for workflow testing)
+*_test.py
+test_gpu.py
+test_setup.py
+test_transcription.py
+
+# Local config
+.claude/

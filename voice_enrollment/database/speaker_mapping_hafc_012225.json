@@ -1,0 +1,205 @@
+{
+  "version": "1.0",
+  "created": "2026-01-30T09:09:12.668622",
+  "description": "Speaker ID mapping from diarization",
+  "source_audio": "voice_enrollment/audio/House_Appropriations_012225.mp3",
+  "source_diarization": "voice_enrollment/temp/hafc_012225_diarization.json",
+  "legislators": {
+    "pamelya_herndon": {
+      "name": "Pamelya Herndon",
+      "chamber": "House",
+      "district": "28",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_01",
+        "segment_count": 35,
+        "total_duration": 34.171875000006594
+      }
+    },
+    "sarah_silva": {
+      "name": "Sarah Silva",
+      "chamber": "House",
+      "district": "53",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_02",
+        "segment_count": 57,
+        "total_duration": 117.65249999999651
+      }
+    },
+    "cathrynn_n._brown": {
+      "name": "Cathrynn N. Brown",
+      "chamber": "House",
+      "district": "55",
+      "party": "Republican",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_03",
+        "segment_count": 63,
+        "total_duration": 127.28812499999617
+      }
+    },
+    "rebecca_dow": {
+      "name": "Rebecca Dow",
+      "chamber": "House",
+      "district": "38",
+      "party": "Republican",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_04",
+        "segment_count": 120,
+        "total_duration": 232.62187499999345
+      }
+    },
+    "meredith_a._dixon": {
+      "name": "Meredith A. Dixon",
+      "chamber": "House",
+      "district": "20",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_05",
+        "segment_count": 181,
+        "total_duration": 333.09562500001266
+      }
+    },
+    "tara_l._lujan": {
+      "name": "Tara L. Lujan",
+      "chamber": "House",
+      "district": "48",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_06",
+        "segment_count": 55,
+        "total_duration": 112.10062499999913
+      }
+    },
+    "brian_g._baca": {
+      "name": "Brian G. Baca",
+      "chamber": "House",
+      "district": "8",
+      "party": "Republican",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_08",
+        "segment_count": 66,
+        "total_duration": 154.8618749999987
+      }
+    },
+    "mark_duncan": {
+      "name": "Mark Duncan",
+      "chamber": "House",
+      "district": "2",
+      "party": "Republican",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_10",
+        "segment_count": 52,
+        "total_duration": 87.95250000000124
+      }
+    },
+    "randall_t._pettigrew": {
+      "name": "Randall T. Pettigrew",
+      "chamber": "House",
+      "district": "61",
+      "party": "Republican",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_11",
+        "segment_count": 169,
+        "total_duration": 287.9718749999938
+      }
+    },
+    "joseph_franklin_hernandez": {
+      "name": "Joseph Franklin Hernandez",
+      "chamber": "House",
+      "district": "4",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_12",
+        "segment_count": 91,
+        "total_duration": 165.83062499999323
+      }
+    },
+    "joseph_sanchez": {
+      "name": "Joseph Sanchez",
+      "chamber": "House",
+      "district": "40",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_16",
+        "segment_count": 23,
+        "total_duration": 35.640000000004875
+      }
+    },
+    "nathan_p._small": {
+      "name": "Nathan P. Small",
+      "chamber": "House",
+      "district": "36",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_17",
+        "segment_count": 303,
+        "total_duration": 630.7537499999962
+      }
+    },
+    "joy_garratt": {
+      "name": "Joy Garratt",
+      "chamber": "House",
+      "district": "29",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_18",
+        "segment_count": 16,
+        "total_duration": 35.94374999999491
+      }
+    },
+    "susan_k._herrera": {
+      "name": "Susan K. Herrera",
+      "chamber": "House",
+      "district": "41",
+      "party": "Democrat",
+      "committees": [
+        "HAFC"
+      ],
+      "diarization": {
+        "speaker_label": "SPEAKER_19",
+        "segment_count": 156,
+        "total_duration": 378.62437500001215
+      }
+    }
+  }
+}
